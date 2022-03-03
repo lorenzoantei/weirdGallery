@@ -8,6 +8,7 @@
   <title>{{ site.title }}</title>
   
   <link rel="stylesheet" href="{{ site.github.url }}/assets/css/main.css" />
+  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
 
   {% seo %}
   
