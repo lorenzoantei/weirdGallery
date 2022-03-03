@@ -1,7 +1,7 @@
 ---
-title: Elements
+title: pag2
 layout: page
-permalink: /elements.html
+permalink: /pag2.html
 markdown: prose
 ---
 

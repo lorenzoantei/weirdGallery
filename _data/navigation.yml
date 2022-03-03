@@ -1,12 +1,6 @@
-- name: articles
-  url: /articles
-  title: Essays I have written over the last years
-- name: elements
-  url: /elements
-  title: Books I have read in the past years.
-- name: project
-  url: /project
-  title: Softwares and Papers I made or paticipated before
-- name: about
-  url: /about
-  title: Learn about me
+- name: nav_item1
+  url: /nav_item1
+  title: nav_item_title_1
+- name: nav_item2
+  url: /nav_item2
+  title: nav_item_title_2

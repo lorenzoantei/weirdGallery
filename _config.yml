@@ -1,22 +1,17 @@
 # site
-url: https://shenlu89.github.io
-author: shenlu89
-title: "Jekyll Tailwindcss Starter" # the name of your site, e.g. ACME Corp.
+url: #
+author: lorenzoantei
+title: "weirdGallery" # the name of your site, e.g. ACME Corp.
 
 # markdown
 markdown: kramdown
 highlighter: rouge
 
-# paginator
-plugins:
-  - jekyll-paginate
-  - jekyll-seo-tag
-
-paginate: 2
-paginate_path: "/page:num"
+# plugins:
+#  - jekyll-seo-tag
 
 # google analytics
-google_analytics_id: "Google Analytics ID"
+#google_analytics_id: "Google Analytics ID"
 
 # other configs
 exclude: ["CNAME", "README.md"]
