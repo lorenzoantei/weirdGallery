@@ -2,6 +2,7 @@
 layout: default
 ---
 
+<!-- 
 <article class="w-full max-w-none py-8">
 
   <head>
@@ -24,3 +25,4 @@ layout: default
     <div class="mt-4 text-justify">{{ content }}</div>
   </div>
 </article>
+-->
