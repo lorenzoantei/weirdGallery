@@ -8,6 +8,10 @@
   <title>{{ site.title }}</title>
   
   <link rel="stylesheet" href="{{ site.github.url }}/assets/css/main.css" />
+
+  <!-- ALL CSS FOR DEVELOPMENT -->
+  <link rel="stylesheet" href="T:\GITHUB\weirdgallery-jekyll-tailwind\node_modules\tailwindcss\dist\tailwind.min.css">
+  
   <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
 
   {% seo %}

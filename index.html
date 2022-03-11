@@ -65,45 +65,7 @@ subtitle: ""
   
 
     <div id="menu" class="parallax-layer" data-depth="0.8">
-      <div class="flex h-screen bg-red-500 text-white">
-
-        <div id="menù1" class="m-auto  h-1/2 w-1/3 transition ease-in-out bg-black space-y-12 p-12 block">
-            <div class="pb-12">
-                <h1>WeirdGallery</h1>
-                <h2>a subtitle</h2>
-            </div>
-            <div class="text-sm">
-                <div class="">latest:</div>
-                <h3><a href="#">a saurceful's project</a></h3>
-                <h3><a href="#">by visualCode</a></h3>
-            </div>
-            <div id="button_previous" class="text-sm" onclick="updateMenuStatus()">
-                <a href="#" class="text-right">previous</a>
-            </div>
-
-        </div>
-        
-        <div id="menù2" class="m-auto h-1/2 w-1/3 bg-black space-y-12 p-12 hidden max-h-3 overflow-auto">
-          
-          <ul>
-            {% for post in site.posts %}
-              <li>
-                
-                <a class="font-bold" href="{{ post.external_url }}">{{ post.title }}</a>
-                <p class="text-sm text-black">{{ post.date | date: "%m-%d-%Y"}}</p>
-                <p class="text-sm">{{ post.author }}</p>
-                
-              </li>
-
-            {% endfor %}
-          </ul>
-            
-            <div id="button_goTo latest" class="text-sm" onclick="updateMenuStatus()">
-                <a href="#" class="text-right">goTo latest</a>
-            </div>
-
-        </div>
-    </div>
+      
       
     </div>
 
@@ -111,31 +73,98 @@ subtitle: ""
   
 </div>
 
-<script id="changeMenuStatus">
-  //selettore div del menu "ultimo progetto"
-  menu1 = document.getElementById('menù1');
-  menu2 = document.getElementById('menù2')
-  
-  //aggiorna stato menu se si clicca su "previous"
-  function updateMenuStatus() {
-
-      if (menu1.classList.contains("block")) {
-          menu1.classList.remove('block');
-          menu1.classList.add('hidden');
-          menu2.classList.remove('hidden');
-          menu2.classList.add('block');
-      } 
+<div id="menù_actual" class="h-screen w-screen flex justify-center items-center visible">
+  <div class="w-1/2 h-1/2 flex items-center bg-red-500 shadow-xl flex-col justify-center space-y-3">
       
-      else {
-          menu1.classList.remove('hidden');
-          menu1.classList.add('block');
-          menu2.classList.add('hidden');
-          menu2.classList.remove('block');
+      <!-- {% for post in site.posts limit:1 %} -->
+      <div class="border w-48 h-48">
+          <a href="#"><img src="{{ post.preview_link }}" alt=" {{ post.alt_preview }} "></a>
+      </div>
+      <h1 class="text-4xl italic">
+          <a href=" {{ post.external_url }} "> {{ post.title }} </a>
+      </h1>
+      <h2>{{ post.description }}</h2>
+      <h2 class="text-2xl">
+          by <a href="{{ post.personal }}">{{ post.author }}</a>
+      </h2>
+      <h2 class="text-sm"> {{ post.date | date: "%m-%d-%Y"}} </h2>
+      <!-- {% endfor %} -->
+      <h3 class="text-sm border rounded border-yellow-800 px-3 bg-yellow-300 hover:bg-yellow-600" onclick="updateMenuStatus()">
+          <a class="flex items-center" href="#">previous</a>
+      </h3>
+  </div>
+
+</div>
+
+<div id="menù_previous" class="h-screen w-screen flex justify-center items-center hidden">
+  <div class="duration-1000 w-1/2 h-1/2 flex items-center bg-blue-500 shadow-xl justify-center space-y-3 overflow-y-auto flex-col">
+
+      <div class="flex flex-col items-center ">
+      <!-- {% for post in site.posts offset:1  %} -->
+      
+      <h1 class="text-4xl italic">
+          <a href=" {{ post.external_url }} "> {{ post.title }} </a>
+      </h1>
+      <h2 class="text-2xl">
+          by <a href="{{ post.personal }}">{{ post.author }}</a>
+      </h2>
+      <h2 class="text-sm"> {{ post.date | date: "%m-%d-%Y"}} </h2>
+      <!-- {% endfor %} -->
+      </div>
+
+      <h3 class="text-sm border rounded border-yellow-800 px-3 bg-yellow-300 hover:bg-yellow-600" onclick="updateMenuStatus()">
+          <a class="flex items-center" href="#">latest</a>
+      </h3>
+  </div>
+</div>
+
+<section id="scripting">
+  <script id="cambiaTitolo">
+
+      var parole = [
+      'weird','gallery', '...'
+      ]
+      var ii = 0;
+      function cambiaTitolo() {
+          document.querySelector("#box").innerHTML = parole[ii];
+          if (ii < parole.length -1) {
+              ii = ii + 1;
+          } else {
+              ii = 0;
+          }
       }
-      
-  }
+      setInterval(cambiaTitolo, 1000);
 
-</script>
+      </script>
+      
+  <script id="changeMenuStatus">
+      //selettore div del menu "ultimo progetto"
+      menu1 = document.getElementById('menù_actual');
+      menu2 = document.getElementById('menù_previous')
+      
+      //aggiorna stato menu se si clicca su "previous"
+      function updateMenuStatus() {
+    
+          if (menu1.classList.contains("visible")) {
+              menu1.classList.remove('visible');
+              menu1.classList.add('hidden');
+              menu2.classList.remove('hidden');
+              menu2.classList.add('visible');
+          } 
+          
+          else {
+              menu1.classList.remove('hidden');
+              menu1.classList.add('visible');
+              menu2.classList.add('hidden');
+              menu2.classList.remove('visible');
+          }
+          
+      }
+    
+    </script>
+</section>
+
+
 
 <!-- 
   <section id="scripts">
