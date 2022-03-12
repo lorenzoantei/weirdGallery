@@ -74,16 +74,16 @@ subtitle: ""
 </div>
 
 <div id="menù_actual" class="h-screen w-screen flex justify-center items-center visible">
-  <div class="w-1/2 h-1/2 flex items-center bg-red-500 shadow-xl flex-col justify-center space-y-3">
+  <div class="w-1/2 h-1/2 flex items-center bg-red-300 hover:shadow-2xl shadow-xl duration-300 flex-col justify-center space-y-3">
       
       <!-- {% for post in site.posts limit:1 %} -->
-      <div class="border w-48 h-48">
-          <a href="#"><img src="{{ post.preview_link }}" alt=" {{ post.alt_preview }} "></a>
+      <div class="hover:opacity-100 opacity-80 duration-300  w-48 h-48">
+          <a href="{{ post.external_url }}"><img src="{{ post.preview_link }}" alt="{{ post.alt_preview }}"></a>
       </div>
       <h1 class="text-4xl italic">
           <a href=" {{ post.external_url }} "> {{ post.title }} </a>
       </h1>
-      <h2>{{ post.description }}</h2>
+      <p class="flex justify-center items-center text-center">{{ post.description }}</p>
       <h2 class="text-2xl">
           by <a href="{{ post.personal }}">{{ post.author }}</a>
       </h2>
