@@ -3,11 +3,11 @@
 
   {% include head.md %}
 
-  <body>      
-      {% include header.md %} 
+  <body>
       
       {{ content }}
 
-      {% include footer.md %}
+      {% include scripts.md %}
+      
   </body>
 </html>

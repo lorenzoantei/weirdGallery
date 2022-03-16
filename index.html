@@ -4,171 +4,99 @@ title: "weirdGallery"
 subtitle: ""
 ---
 
-<div id="parallax-container">
-      
-  <div class="parallax-wrapper ">
-    <!-- <div id="cornice" class="parallax-layer border-4" data-depth="0.1"></div>-->
-    
-    <!--<div id="aframe-window" class="parallax-layer figure1" data-depth="0.1">
-        
-          <a-scene trasparent="true" vr-mode-ui="enabled: false">
-            
+<div id="static-div" class="static">
 
-            <a-assets id="texture-colonna">
-              <a-asset-item id="column-obj" src="assets/"></a-asset-item>
-              <a-asset-item id="column-mtl" src="assets/colonnaobj/Colonna_base.mtl"></a-asset-item>
-            </a-assets>
-      
-            <a-box id="piano" 
-              position="0 -0.8 -50" 
-              rotation="-90 0 0" 
-              width="2" 
-              height="200" 
-              material="
-                src:#nyan;
-                opacity: 0.65; 
-                metalness: 0.7; 
-                color: purple; 
-                emissive: purple; 
-                repeat: 10 1000" 
-              geometry="height: 100">
-            </a-box>
-      
-            <a-entity id="colonna" 
-              geometry="primitive:icosahedron; radius:3.8" 
-              position="6 2 -10"
-              navigate-on-click="url: ./old.html"
-              animation="property: rotation; to: 360 360 360; dir: reverse; loop: true; dur: 120000"
-              material="opacity:1; metalness:0.8; color:white; blending:additive"
-            >
-              <a-entity 
-                obj-model="obj: #column-obj;" 
-                animation="property: rotation; to: 360 360 360; loop: true; dur: 90000"
-                scale="0.15 0.15 0.15"
-              ></a-entity>
-      
-            </a-entity>
-      
-            <a-camera 
-              cursor="rayOrigin: mouse" 
-              position="0 0 0"
-              wasd-controls-enabled="false"
-              
-            ></a-camera>
-      
-            <a-entity id="Luce spot" light="type: point" rotation=""></a-entity>
-      
-                  
-          </a-scene>
-        
-    </div>-->
+<section id="background">
+  <a-scene>
+    <a-entity environment="
+    groundColor: #445; 
+    grid: cross;
+    skyType: gradient;
+    skyColor: #1b945a;
+    horizonColor:  #0f5333;
+    shadow: true;
+    fog: .9;
+    ground: canyon;
+    groundYScale: 20;
+    groundTexture: walkernoise;
+    groundColor: #5e1c3a;
+    groundColor2: #0e7a6a;
+    "></a-entity> <!-- variabili qui: https://github.com/supermedium/aframe-environment-component -->
+
+    <a-camera wasd-controls-enabled="false" animation="property: rotation; to: 360 360 360; dir: reverse; loop: true; dur: 220000"></a-camera>
+</a-scene>
+</section>
+
+<section id="menu" class="absolute flex h-screen">
   
+    <div class="m-auto" data-depth="0.2">
 
-    <div id="menu" class="parallax-layer" data-depth="0.8">
-      
-      
+      <div class="
+       m-8 md:m-24 rounded-3xl bg-white hover:shadow-2xl shadow-xl duration-300 flex flex-col items-center
+      ">
+        <div class="flex flex-col space-y-3">
+          {% for post in site.posts limit:1 %}
+
+              <div class="w-1/4 flex m-auto mt-6">
+                    <a href="{{ post.external_url }}"><img class="rounded-xl object-cover " src="{{ post.preview_link }}" alt="{{ post.alt_preview }}"></a>
+              </div>
+
+              <h2 class="text-xs flex mx-auto">{{ post.date | date: "%Y-%m-%d"}} </h2>
+
+              <h1 class="flex mx-auto">
+                    <a class="text-2xl md:text-3xl italic underline" href="{{ post.external_url }}"> {{ post.title }} </a>
+              </h1>
+
+              <div class="flex mx-auto">
+                <h2 class="underline text-sm">
+                  by <a href="{{ post.personal }}"> {{ post.author }}</a>
+                </h2>
+              </div>
+
+              <div class="flex justify-center">
+                <p class="px-24">{{ post.description }}</p>
+              </div>
+          
+            {% endfor %}
+          </div>
+        
+
+          <div class="underline text-sm my-6" onclick="updateMenuStatus()">
+            <a href="#">previous</a>
+          </div>
+
+        </div>
+
+     
     </div>
-
-  </div>
   
-</div>
-
-<div id="menù_actual" class="h-screen w-screen flex justify-center items-center visible">
-  <div class="w-1/2 h-1/2 flex items-center bg-red-300 hover:shadow-2xl shadow-xl duration-300 flex-col justify-center space-y-3">
-      
-      <!-- {% for post in site.posts limit:1 %} -->
-      <div class="hover:opacity-100 opacity-80 duration-300  w-48 h-48">
-          <a href="{{ post.external_url }}"><img src="{{ post.preview_link }}" alt="{{ post.alt_preview }}"></a>
-      </div>
-      <h1 class="text-4xl italic">
+  <div id="menù_previous" 
+  class="h-screen w-screen flex justify-center items-center hidden">
+    <div class="md:w-1/2 md:h-1/2 w-2/3 h-2/3 flex items-center rounded-3xl bg-white opacity-50 hover:shadow-2xl shadow-xl duration-300 flex-col justify-center space-y-3">
+  
+        <div class="flex flex-col items-center">
+          
+        {% for post in site.posts offset:1  %}
+        
+        <div id="{{ post.title }}" class="py-3">
+        <h1 class="text-4xl italic">
           <a href=" {{ post.external_url }} "> {{ post.title }} </a>
-      </h1>
-      <p class="flex justify-center items-center text-center">{{ post.description }}</p>
-      <h2 class="text-2xl">
+        </h1>
+        <h2 class="text-2xl">
           by <a href="{{ post.personal }}">{{ post.author }}</a>
-      </h2>
-      <h2 class="text-sm"> {{ post.date | date: "%m-%d-%Y"}} </h2>
-      <!-- {% endfor %} -->
-      <h3 class="text-sm border rounded border-yellow-800 px-3 bg-yellow-300 hover:bg-yellow-600" onclick="updateMenuStatus()">
-          <a class="flex items-center" href="#">previous</a>
-      </h3>
-  </div>
-
-</div>
-
-<div id="menù_previous" class="h-screen w-screen flex justify-center items-center hidden">
-  <div class="duration-1000 w-1/2 h-1/2 flex items-center bg-blue-500 shadow-xl justify-center space-y-3 overflow-y-auto flex-col">
-
-      <div class="flex flex-col items-center ">
-      <!-- {% for post in site.posts offset:1  %} -->
-      
-      <h1 class="text-4xl italic">
-          <a href=" {{ post.external_url }} "> {{ post.title }} </a>
-      </h1>
-      <h2 class="text-2xl">
-          by <a href="{{ post.personal }}">{{ post.author }}</a>
-      </h2>
-      <h2 class="text-sm"> {{ post.date | date: "%m-%d-%Y"}} </h2>
-      <!-- {% endfor %} -->
+        </h2>
+        <h2 class="text-sm"> {{ post.date | date: "%m-%d-%Y"}} </h2>
       </div>
 
-      <h3 class="text-sm border rounded border-yellow-800 px-3 bg-yellow-300 hover:bg-yellow-600" onclick="updateMenuStatus()">
-          <a class="flex items-center" href="#">latest</a>
-      </h3>
+        {% endfor %}
+        </div>
+  
+        <h3 class="text-sm border rounded border-yellow-800 px-3 bg-yellow-300 hover:bg-yellow-600" onclick="updateMenuStatus()">
+            <a class="flex items-center" href="#">latest</a>
+        </h3>
+    </div>
   </div>
+
+</section>
+
 </div>
-
-<section id="scripting">
-  <script id="cambiaTitolo">
-
-      var parole = [
-      'weird','gallery', '...'
-      ]
-      var ii = 0;
-      function cambiaTitolo() {
-          document.querySelector("#title").innerHTML = parole[ii];
-          if (ii < parole.length -1) {
-              ii = ii + 1;
-          } else {
-              ii = 0;
-          }
-      }
-      setInterval(cambiaTitolo, 1000);
-
-      </script>
-      
-  <script id="changeMenuStatus">
-      //selettore div del menu "ultimo progetto"
-      menu1 = document.getElementById('menù_actual');
-      menu2 = document.getElementById('menù_previous')
-      
-      //aggiorna stato menu se si clicca su "previous"
-      function updateMenuStatus() {
-    
-          if (menu1.classList.contains("visible")) {
-              menu1.classList.remove('visible');
-              menu1.classList.add('hidden');
-              menu2.classList.remove('hidden');
-              menu2.classList.add('visible');
-          } 
-          
-          else {
-              menu1.classList.remove('hidden');
-              menu1.classList.add('visible');
-              menu2.classList.add('hidden');
-              menu2.classList.remove('visible');
-          }
-          
-      }
-    
-    </script>
-</section>
-
-
-
-<!-- 
-  <section id="scripts">
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-  <script  src="assets/parallax.js"></script>
-</section>
--->
