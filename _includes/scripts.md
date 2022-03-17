@@ -23,8 +23,8 @@
     <script id="changeMenuStatus">
 
         //selettore div del menu "ultimo progetto"
-        menu1 = document.getElementById('menù_actual');
-        menu2 = document.getElementById('menù_previous')
+        menu1 = document.getElementById('menu_actual');
+        menu2 = document.getElementById('menu_prev')
         
         //aggiorna stato menu se si clicca su "previous"
         function updateMenuStatus() {

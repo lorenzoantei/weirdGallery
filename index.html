@@ -6,7 +6,7 @@ subtitle: ""
 
 <div id="static-div" class="static">
 
-<section id="background">
+<section id="background" class="">
   <a-scene>
     <a-entity environment="
     groundColor: #445; 
@@ -27,14 +27,15 @@ subtitle: ""
 </a-scene>
 </section>
 
-<section id="menu" class="absolute flex h-screen">
+<section id="menu" class="absolute flex h-screen mix-blend-multiply  opacity-80">
   
-    <div class="m-auto" data-depth="0.2">
+    <div class="flex justify-center items-center">
 
       <div class="
-       m-8 md:m-24 rounded-3xl bg-white hover:shadow-2xl shadow-xl duration-300 flex flex-col items-center
+       w-2/3 h-2/3 rounded-tl-3xl rounded-bl-3xl rounded-br-3xl  hover:shadow-2xl shadow-xl duration-300 flex flex-col items-center
+       mix-blend-multiply blur-2xl  
       ">
-        <div class="flex flex-col space-y-3">
+        <div id="menu_actual" class="flex flex-col space-y-3 visible">
           {% for post in site.posts limit:1 %}
 
               <div class="w-1/4 flex m-auto mt-6">
@@ -59,44 +60,38 @@ subtitle: ""
           
             {% endfor %}
           </div>
-        
 
-          <div class="underline text-sm my-6" onclick="updateMenuStatus()">
-            <a href="#">previous</a>
-          </div>
+        <div id="menu_prev" class="flex flex-col space-y-2 hidden overflow-y-auto">
+          {% for post in site.posts offset:1  %}
+
+            <h2 class="text-xs flex mx-auto pt-3">{{ post.date | date: "%Y-%m-%d"}} </h2>
+
+            <h1 class="flex mx-auto">
+                  <a class="text-2xl md:text-3xl italic underline" href="{{ post.external_url }}"> {{ post.title }} </a>
+            </h1>
+
+            <div class="flex mx-auto">
+              <h2 class="underline text-sm">
+                by <a href="{{ post.personal }}"> {{ post.author }}</a>
+              </h2>
+            </div>
+
+            <div class="flex justify-center pb-12">
+              <p class="px-24">{{ post.description }}</p>
+            </div>
+          
+          {% endfor %}
+        </div>
+        
+        <div class="underline text-sm my-6" onclick="updateMenuStatus()">
+          <a href="#">previous</a>
+        </div>
 
         </div>
 
      
     </div>
-  
-  <div id="menù_previous" 
-  class="h-screen w-screen flex justify-center items-center hidden">
-    <div class="md:w-1/2 md:h-1/2 w-2/3 h-2/3 flex items-center rounded-3xl bg-white opacity-50 hover:shadow-2xl shadow-xl duration-300 flex-col justify-center space-y-3">
-  
-        <div class="flex flex-col items-center">
-          
-        {% for post in site.posts offset:1  %}
-        
-        <div id="{{ post.title }}" class="py-3">
-        <h1 class="text-4xl italic">
-          <a href=" {{ post.external_url }} "> {{ post.title }} </a>
-        </h1>
-        <h2 class="text-2xl">
-          by <a href="{{ post.personal }}">{{ post.author }}</a>
-        </h2>
-        <h2 class="text-sm"> {{ post.date | date: "%m-%d-%Y"}} </h2>
-      </div>
-
-        {% endfor %}
-        </div>
-  
-        <h3 class="text-sm border rounded border-yellow-800 px-3 bg-yellow-300 hover:bg-yellow-600" onclick="updateMenuStatus()">
-            <a class="flex items-center" href="#">latest</a>
-        </h3>
-    </div>
-  </div>
-
+ 
 </section>
 
 </div>
