@@ -1,97 +1,58 @@
 ---
 layout: default
-title: "weirdGallery"
-subtitle: ""
+title: "weirdgallery"
 ---
 
-<div id="static-div" class="static">
-
-<section id="background" class="">
-  <a-scene>
-    <a-entity environment="
-    groundColor: #445; 
-    grid: cross;
-    skyType: gradient;
-    skyColor: #1b945a;
-    horizonColor:  #0f5333;
-    shadow: true;
-    fog: .9;
-    ground: canyon;
-    groundYScale: 20;
-    groundTexture: walkernoise;
-    groundColor: #5e1c3a;
-    groundColor2: #0e7a6a;
-    "></a-entity> <!-- variabili qui: https://github.com/supermedium/aframe-environment-component -->
-
-    <a-camera wasd-controls-enabled="false" animation="property: rotation; to: 360 360 360; dir: reverse; loop: true; dur: 220000"></a-camera>
-</a-scene>
-</section>
-
-<section id="menu" class="absolute flex h-screen mix-blend-multiply  opacity-80">
-  
-    <div class="flex justify-center items-center">
-
-      <div class="
-       w-2/3 h-2/3 rounded-tl-3xl rounded-bl-3xl rounded-br-3xl  hover:shadow-2xl shadow-xl duration-300 flex flex-col items-center
-       mix-blend-multiply  
-      ">
-        <div id="menu_actual" class="flex flex-col space-y-3 visible">
-          {% for post in site.posts limit:1 %}
-
-              <div class="w-1/4 flex m-auto mt-6">
-                    <a href="{{ post.external_url }}"><img class="rounded-xl object-cover " src="{{ post.preview_link }}" alt="{{ post.alt_preview }}"></a>
-              </div>
-
-              <h2 class="text-xs flex mx-auto">{{ post.date | date: "%Y-%m-%d"}} </h2>
-
-              <h1 class="flex mx-auto">
-                    <a class="text-2xl md:text-3xl italic underline" href="{{ post.external_url }}"> {{ post.title }} </a>
-              </h1>
-
-              <div class="flex mx-auto">
-                <h2 class="underline text-sm">
-                  by <a href="{{ post.personal }}"> {{ post.author }}</a>
-                </h2>
-              </div>
-
-              <div class="flex justify-center">
-                <p class="px-24">{{ post.description }}</p>
-              </div>
-          
-            {% endfor %}
-          </div>
-
-        <div id="menu_prev" class="flex flex-col space-y-2 hidden overflow-y-auto">
-          {% for post in site.posts offset:1  %}
-
-            <h2 class="text-xs flex mx-auto pt-3">{{ post.date | date: "%Y-%m-%d"}} </h2>
-
-            <h1 class="flex mx-auto">
-                  <a class="text-2xl md:text-3xl italic underline" href="{{ post.external_url }}"> {{ post.title }} </a>
-            </h1>
-
-            <div class="flex mx-auto">
-              <h2 class="underline text-sm">
-                by <a href="{{ post.personal }}"> {{ post.author }}</a>
-              </h2>
-            </div>
-
-            <div class="flex justify-center pb-12">
-              <p class="px-24">{{ post.description }}</p>
-            </div>
-          
-          {% endfor %}
-        </div>
+<div class="relative">
+    <div id="bg-aframe" class="">
+        <a-scene>
+            <a-entity environment="
+            groundColor: #445; 
+            grid: cross;
+            skyType: gradient;
+            skyColor: #1b945a;
+            horizonColor:  #0f5333;
+            shadow: true;
+            fog: .9;
+            ground: canyon;
+            groundYScale: 20;
+            groundTexture: walkernoise;
+            groundColor: #5e1c3a;
+            groundColor2: #0e7a6a;
+            "></a-entity> <!-- variabili qui: https://github.com/supermedium/aframe-environment-component -->
         
-        <div class="underline text-sm my-6" onclick="updateMenuStatus()">
-          <a href="#">previous</a>
-        </div>
+            <a-camera wasd-controls-enabled="false" animation="property: rotation; to: 360 180 0; dir: reverse; loop: true; dur: 220000"></a-camera>
+        </a-scene>
+    </div> 
+    <div class="max-h-screen w-screen overflow-y-scroll snap snap-y snap-mandatory absolute">
 
-        </div>
+       
+            {% for post in site.posts %}
+            <section id="{{ post.title }}" class="flex items-center justify-center  h-screen bg-center bg-cover snap-start bg-home-1 text-white ">
+                <div class="flex flex-col w-3/4 space-y-12 text-yellow-400 ">
 
-     
+                    <div class="w-1/3 linko"><p>{{ post.project_description }}</p></div>
+
+                <div class="md:text-9xl text-4xl">
+                    <a class="hover:underline " href="{{ post.project_link }}">
+                        <div class="flex flex-col linko  ">
+                            <div class="flex justify-end object-cover">{{ post.TLD }}</div><div class="flex justify-end">.{{ post.SLD }}</div>
+                        </div>
+                    </a>
+                </div>
+
+                  <a class="hover:underline linko md:text-3xl text-2xl" href="{{ post.author_link }}">by {{ post.author }}</a>
+
+                  <date class="linko">{{ post.date | date: "%Y-%m-%d" }}</date>
+                  
+                </div>
+              </section>
+            {% endfor %}
+        
     </div>
- 
-</section>
-
+    <!-- <div id="" class="absolute bottom-0">
+        scroll for previous
+    </div> -->
+    
+    
 </div>
