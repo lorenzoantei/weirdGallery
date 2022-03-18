@@ -4,7 +4,7 @@ title: "weirdgallery"
 ---
 
 <div class="relative">
-    <div id="bg-aframe" class="">
+    <div id="bg-aframe">
         <a-scene>
             <a-entity environment="
             groundColor: #445; 
@@ -24,7 +24,8 @@ title: "weirdgallery"
             <a-camera wasd-controls-enabled="false" animation="property: rotation; to: 360 180 0; dir: reverse; loop: true; dur: 220000"></a-camera>
         </a-scene>
     </div> 
-    <div class="max-h-screen w-screen overflow-y-scroll snap snap-y snap-mandatory absolute">
+    <div id="menu"
+    class="max-h-screen w-screen overflow-y-scroll snap snap-y snap-mandatory absolute">
 
        
             {% for post in site.posts %}
@@ -50,9 +51,17 @@ title: "weirdgallery"
             {% endfor %}
         
     </div>
-    <!-- <div id="" class="absolute bottom-0">
-        scroll for previous
-    </div> -->
+
+    <div id="scroll_text" class=" duration-2000">
+       
+    </div> 
+    <div id="menu"
+    class="max-h-screen w-screen  absolute  text-yellow-400 linko animate-pulse">
+
+    <div class="flex justify-center items-end">scroll for previous</div>
+    <!-- jss to add https://khaalipaper.com/javascript/show-div-on-scroll-down-after-some-height.php-->
+        
+    </div>
     
     
 </div>
