@@ -3,7 +3,7 @@ layout: default
 title: "weirdgallery"
 ---
 
-<div class="relative">
+<div id="main" class="relative">
     <div id="bg-aframe">
         <a-scene>
             <a-entity environment="
@@ -52,16 +52,17 @@ title: "weirdgallery"
         
     </div>
 
-    <div id="scroll_text" class=" duration-2000">
-       
-    </div> 
-    <div id="menu"
-    class="max-h-screen w-screen  absolute  text-yellow-400 linko animate-pulse">
-
-    <div class="flex justify-center items-end">scroll for previous</div>
+    <div id="scroll"
+    class="text-yellow-400 linko animate-bounce opacity-75 fixed bottom-0 py-12 w-full">
+    
+        <div class="flex flex-col w-full">
+            <div class="flex justify-center">scroll for previous</div>
+            <div class="flex justify-center">↓</div>
+        </div>
+    
     <!-- jss to add https://khaalipaper.com/javascript/show-div-on-scroll-down-after-some-height.php-->
-        
     </div>
-    
-    
+   
 </div>
+
+

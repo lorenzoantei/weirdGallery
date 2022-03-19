@@ -21,5 +21,16 @@
       }
     </style>
     {{ content }}
+
+    <script id="hide_scroll">
+      document.getElementById("main").addEventListener("wheel", hideScroll);
+      console.log("**script-hide_scroll: initialized");
+
+      function hideScroll() {
+        document.getElementById("scroll").classList.add('hidden');
+        console.log("**script-hide_scroll: scroll hidden");
+      }
+    </script>
+
   </body>
 </html>
