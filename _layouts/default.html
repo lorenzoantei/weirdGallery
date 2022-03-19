@@ -22,6 +22,14 @@
     </style>
     {{ content }}
 
+    <script id="forceOnTop">
+      console.log("forceOnTop: initialized");
+      window.onbeforeunload = () => {  
+        window.scrollTo(0, 0); 
+        console.log("forceOnTop: done");
+      };
+    </script>
+
     <script id="hide_scroll">
       document.getElementById("main").addEventListener("wheel", hideScroll);
       console.log("**script-hide_scroll: initialized");
