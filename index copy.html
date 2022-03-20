@@ -1,0 +1,41 @@
+---
+layout: default
+title: "weirdgallery"
+---
+
+<div id="main" class="relative text-red-500 linko">
+
+    <div id="menu"
+    class="max-h-screen w-screen overflow-y-scroll snap snap-y snap-mandatory absolute">
+
+       
+            {% for post in site.posts %}
+            <section id="{{ post.title }}" class="flex #items-center h-screen bg-center bg-cover snap-start bg-home-1">
+                <div class="flex flex-col space-y-24">
+
+                    <div class="text-sm"><p>{{ post.project_description }}</p></div>
+
+                    <div class="w-full">
+                        <a class="hover:underline " href="{{ post.project_link }}">
+                            <div class="flex flex-col break-all text-right text-xl px-12">
+                                <div class="">{{ post.TLD }}</div>
+                                <div class="">.{{ post.SLD }}</div>
+                            </div>
+                        </a>
+                    </div>
+
+                  <a class="hover:underline text-sm" href="{{ post.author_link }}">by {{ post.author }}</a>
+
+                  <date class="text-sm">{{ post.date | date: "%Y-%m-%d" }}</date>
+                  
+                </div>
+              </section>
+            {% endfor %}
+            
+        
+    </div>
+
+   
+</div>
+
+
