@@ -24,7 +24,7 @@ title: "weirdgallery"
             <a-camera wasd-controls-enabled="false" animation="property: rotation; to: 360 180 0; dir: reverse; loop: true; dur: 220000"></a-camera>
         </a-scene>
     </div> 
-    <div id="main" class="relative #bg-green-600 text-white linko">
+    <div id="main" class="relative #bg-green-600 text-white linko selection:bg-yellow-400 selection:text-black">
 
         <div id="menu_main"
         class="h-screen w-screen overflow-y-scroll snap snap-y snap-mandatory">
@@ -35,7 +35,7 @@ title: "weirdgallery"
                 <div class="flex justify-between flex-col h-full md:py-6 py-14">
     
                     <div class="w-2/3 px-4 md:px-10 lg:px-36
-                    text-sm md:text-xl lg:text-2xl 2xl:text-3xl">
+                    text-sm md:text-md lg:text-xl 2xl:text-xl">
                         <p>{{ post.project_description }}</p>
                     </div>
     
@@ -43,11 +43,13 @@ title: "weirdgallery"
                     class="flex items-center w-full justify-end md:h-2/3 
                     px-2 md:px-10 lg:px-36">
                         <a class="flex flex-col break-all
-                        text-right text-2xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl
-                        hover:text-black hover:bg-yellow-400 px-2 rounded-xl hover:animate-pulse transition ease-in-out duration-500 "
+                        text-right text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl
+                        text-white/100 hover:text-black  bg-yellow-400/10 hover:bg-yellow-400/90 px-2 rounded-xl hover:animate-pulse transition ease-in-out duration-500 "
                         href="{{ post.project_link }}">
-                            <div class="">{{ post.TLD }}</div>
-                            <div class="">.{{ post.SLD }}</div>
+                            <div>
+                                <div class="">{{ post.TLD }}</div>
+                                <div class="">.{{ post.SLD }}</div>
+                            </div>
                         </a>
                     </div>
     
