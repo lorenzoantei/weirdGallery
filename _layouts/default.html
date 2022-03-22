@@ -1,42 +1,36 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <title>{{ page.title }} - {{ site.title }}</title>
-    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
 
-    <script src="/assets/vendor/tailwind.css"></script>
-    
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+
+    <script src="../assets/vendor/tailwind.css"></script>
     <link rel="stylesheet" href="../assets/css/my.css">
 
-  </head>
-  <body>
-    
-    {{ content }}
+    <script id="text-fit-service">
+        function doFit(){
+          textFit(document.getElementsByClassName('fit-text'), {maxFontSize: 2000});}
+        function waitForTextFit() {
+          var interval = setInterval(function() {
+            if (window.textFit) {
+              clearInterval(interval);
+              doFit();
+            }
+          }, 50); 
+        }
+        waitForTextFit();
+      </script>
 
-    <script id="forceOnTop">
-      console.log("forceOnTop: initialized");
-      window.onbeforeunload = () => {  
-        window.scrollTo(0, 0); 
-        console.log("forceOnTop: done");
-      };
-    </script>
+      <script id="textFitLib" src="../assets/js/textfit-2.3.1.js"></script>
+      
+</head>
 
-    <script id="hide_scroll">
-      document.getElementById("main").addEventListener("wheel", hideScroll);
-      console.log("**script-hide_scroll: initialized");
+{{ content }}
 
-      function hideScroll() {
-        document.getElementById("scroll").classList.add('hidden');
-        console.log("**script-hide_scroll: scroll hidden");
-      }
-    </script>
-
-  </body>
+<!-- loranto ἄνθος  2022 -->
 </html>

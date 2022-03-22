@@ -1,3 +1,18 @@
-.linko {
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Roboto&display=swap');
+
+.bungee {
         font-family: 'Bungee', cursive;
       }
+
+.roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+/*.linko_title {
+  --maxsize: 50;
+  --minsize: 30;
+  --maxwidthscreen: 2000;
+  --minwidthscreen: 320;
+
+        font-size: calc((var(--minsize) * 1px) + (var(--maxsize) - var(--minsize)) * ((100vw - (var(--minwidthscreen) *1px) ) / (var(--maxwidthscreen) - var(--minwidthscreen))));
+}*/
