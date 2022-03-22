@@ -33,10 +33,19 @@ title: "weirdgallery"
   
         <div class="flex flex-col justify-between h-full w-full py-3 px-3 sm:py-12 sm:px-12 xl:px-96">
   
-          <div class="#bg-blue-500 p-2 w-2/3
+          <div class="flex justify-between">
+            <div class="#bg-blue-500  w-2/3
                         md:text-xl lg:text-2xl 2xl:text-3xl">
                             <p class="">{{ post.project_description }}</p>
             </div>
+            <div class="w-1/3 flex justify-end items-center ">
+                <a class=" md:text-xl lg:text-2xl 2xl:text-3xl 
+                hover:text-black hover:bg-yellow-400 rounded-xl hover:animate-pulse transition ease-in-out duration-500"
+                 href="#">
+                  <div class="p-2">about</div>
+                </a>
+              </div>
+          </div>
             
           <div id="{{ post.title }}__title" class="hover:text-black hover:bg-yellow-400 rounded-xl hover:animate-pulse transition ease-in-out duration-500 fit-text w-full h-2/3 #bg-red-500 break-all bungee">
             <a class="#hover:underline #hover:underline-offset-8" href="{{ post.project_link }}">

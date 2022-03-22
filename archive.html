@@ -1,0 +1,46 @@
+---
+layout: default
+title: "weirdgallery - archive"
+note: "da creare layout minimal"
+--- 
+
+<main class="py-6 px-12">
+    
+  <div class="py-6">
+    <div class="flex justify-center"><h1 class="text-3xl">{{ site.title }}</h1></div>
+
+    {% for post in site.posts %}
+      {% assign currentdate = post.date | date: "%Y" %}
+      {% if currentdate != date %}
+        <li id="y{{currentdate}}" class="list-none py-3 pt-12 text-2xl" >{{ currentdate }}</li>
+        {% assign date = currentdate %} 
+      {% endif %}
+      <div class="px-6 py-2 ">
+        <li id="{{post.title }}" class="list-none p-2">
+          {{ post.date | date: "%Y-%m-%d" }} <br>
+          
+          <div class="p-2">
+            <a class="text-blue-500 md:text-xl hover:underline" href="{{ post.url }}">
+            
+              {{ post.title }} <br>
+            </a>
+            
+            {{ post.project_description }} <br>
+  
+            <a class="hover:underline text-blue-500" href="{{ post.author }}">
+              {{ post.author }}
+            </a>
+            - 
+            <a class="hover:underline text-blue-500" href="mailto:{{ post.author_email }}">
+              {{ post.author_email }}
+            </a> <br>
+          </div>
+        
+        </li>
+      </div>
+    {% endfor %}
+  </div>
+
+<a class="my-12 text-blue-500" href="/">goTo home</a>
+
+</main>
