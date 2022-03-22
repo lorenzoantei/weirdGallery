@@ -3,7 +3,32 @@ layout: default
 title: "weirdgallery"
 --- 
 
+<<<<<<< HEAD
 <body class="roboto text-white #bg-black">
+=======
+<div id="main" class="relative">
+    <div id="bg-aframe">
+        <a-scene>
+            <a-entity environment="
+            groundColor: #445; 
+            grid: cross;
+            skyType: gradient;
+            skyColor: #1b945a;
+            horizonColor:  #0f5333;
+            shadow: true;
+            fog: .9;
+            ground: canyon;
+            groundYScale: 20;
+            groundTexture: walkernoise;
+            groundColor: #5e1c3a;
+            groundColor2: #0e7a6a;
+            "></a-entity> <!-- variabili qui: https://github.com/supermedium/aframe-environment-component -->
+        
+            <a-camera wasd-controls-enabled="false" animation="property: rotation; to: 360 180 0; dir: reverse; loop: true; dur: 220000"></a-camera>
+        </a-scene>
+    </div> 
+    <div id="main" class="relative #bg-green-600 text-white linko selection:bg-yellow-400 selection:text-black">
+>>>>>>> a61cd63e16465073bd2d873321c6043fe02cffd5
 
     <div id="bg-aframe" class="">
       <a-scene>
@@ -27,6 +52,7 @@ title: "weirdgallery"
   </div> 
   
     
+<<<<<<< HEAD
     <main id="menu" class="relative w-screen h-screen overflow-y-scroll snap snap-y snap-mandatory">
       {% for post in site.posts %}
       <section id="{{ post.title }}" class="snap-start h-full w-full">
@@ -37,6 +63,60 @@ title: "weirdgallery"
                         md:text-xl lg:text-2xl 2xl:text-3xl">
                             <p class="">{{ post.project_description }}</p>
             </div>
+=======
+            {% for post in site.posts %}
+            <section id="{{ post.title }}" class="snap-start h-full">
+    
+                <div class="flex justify-between flex-col h-full md:py-6 py-14">
+    
+                    <div class="w-2/3 px-4 md:px-10 lg:px-36
+                    text-sm md:text-md lg:text-xl 2xl:text-xl">
+                        <p>{{ post.project_description }}</p>
+                    </div>
+    
+                    <div id="title" 
+                    class="flex items-center w-full justify-end md:h-2/3 
+                    px-2 md:px-10 lg:px-36">
+                        <a class="flex flex-col break-all
+                        text-right text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl
+                        text-white/100 hover:text-black  bg-yellow-400/10 hover:bg-yellow-400/90 px-2 rounded-xl hover:animate-pulse transition ease-in-out duration-500 "
+                        href="{{ post.project_link }}">
+                            <div>
+                                <div class="">{{ post.TLD }}</div>
+                                <div class="">.{{ post.SLD }}</div>
+                            </div>
+                        </a>
+                    </div>
+    
+                    <a class="flex flex-col 
+                    w-1/2 px-2 md:px-10 lg:px-36" 
+                    href="{{ post.author_link }}">
+                        <div class="px-2
+                        md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
+                            by
+                        </div>
+                        <div class="w-fit rounded p-2
+                        sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl
+                        hover:text-black hover:bg-yellow-400 rounded-xl hover:animate-pulse transition ease-in-out duration-500">
+                            {{ post.author }}
+                        </div>
+                    </a>
+    
+                    <date 
+                    class="w-1/2 px-2 md:px-12 lg:px-36
+                    text-sm md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl
+                    ">
+                        <div class="px-2">{{ post.date | date: "%Y-%m-%d" }}</div>
+                    </date>
+    
+                </div>
+    
+                        
+                
+                </section>
+            {% endfor %}
+                
+>>>>>>> a61cd63e16465073bd2d873321c6043fe02cffd5
             
           <div id="{{ post.title }}__title" class="hover:text-black hover:bg-yellow-400 rounded-xl hover:animate-pulse transition ease-in-out duration-500 fit-text w-full h-2/3 #bg-red-500 break-all bungee">
             <a class="#hover:underline #hover:underline-offset-8" href="{{ post.project_link }}">
@@ -63,7 +143,11 @@ title: "weirdgallery"
     </main>
 
     <div id="scroll"
+<<<<<<< HEAD
     class="text-yellow-400 linko animate-bounce opacity-75 fixed bottom-0 py-12 w-full hidden">
+=======
+    class="text-yellow-400 linko animate-bounce opacity-75 fixed bottom-0 py-3 w-full">
+>>>>>>> a61cd63e16465073bd2d873321c6043fe02cffd5
     
         <div class="flex flex-col w-full">
             <div class="flex justify-center">scroll for previous</div>
